@@ -1,14 +1,14 @@
 public class Knapsack {
-public static int knapSack(int W, int wt[], int val[], int n)
+public static int knapSack(int maxWeight, int wt[], int val[], int n)
 	      {
 	           int i, w;
-	       int K[][] = new int[n+1][W+1];
+	       int K[][] = new int[n+1][maxWeight+1];
 	        
 	       // Create array K[][] (2 dimensional)
 	       
 	       for (i = 0; i <= n; i++)
 	       {
-	           for (w = 0; w <= W; w++)
+	           for (w = 0; w <= maxWeight; w++)
 	           {
 	               if (i==0 || w==0)
 	                    K[i][w] = 0;
@@ -19,5 +19,16 @@ public static int knapSack(int W, int wt[], int val[], int n)
 	           }
 	        }
 	        
-	        return K[n][W];
+	        return K[n][maxWeight];
 	  }
+	
+	
+		public static void main(String[] args) {
+
+			int wt[] = { 6, 1, 2, 4, 5 };
+			int val[] = { 10, 5, 4, 8, 6 };
+			int maxWeight = 5;
+			int n=3;
+			System.out.println(knapSack(maxWeight, wt, val, n));
+	}
+
