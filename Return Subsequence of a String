@@ -1,0 +1,30 @@
+public class Subsequences {
+
+	public static String[] subsquences(String input) {
+
+		if (input.length() == 0) {
+			String ans[] = { "" };
+			return ans;
+		}
+
+		String[] smallans = subsquences(input.substring(1));  // A string array to store recursion's answer
+		String output[] = new String[2 * smallans.length];    // A final output string array to store complete answer
+		for (int i = 0; i < smallans.length; i++) {
+			output[i] = smallans[i];                            //copying the contents
+		}
+		for (int i = 0; i < smallans.length; i++) {
+			output[i + smallans.length] = input.charAt(0) + smallans[i];
+		}
+		return output;
+	}
+  
+  public static void main(String[] args) {
+
+		String s = "xyz";
+		String[] ans = subsquences(s);
+		for(int i =0;i<2*s.length();i++) {
+		System.out.println(ans[i]);
+		}
+	}
+
+}
