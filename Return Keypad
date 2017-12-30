@@ -1,0 +1,67 @@
+//Given an integer n,using phone keypad,find the possible strings that can be made using digits of input n
+
+public class Keypad {
+	
+	public static String keypadHelper(int n) {
+		if(n==1)
+			return "";            // possibilities in a mobile keypad
+		else if(n==2)
+			return "abc";
+		else if(n==3)
+			return "def";
+		else if(n==4)
+			return "ghi";
+		else if(n==5)
+			return "jkl";
+		else if(n==6)
+			return "mno";
+		else if(n==7)
+			return "pqrs";
+		else if(n==8)
+			return "tuv";
+		else
+			return "wxyz";
+			
+				// String arr[]={"","","abc","def"....};      another option for creating the possibilities
+		//return arr[n];
+		
+	}
+	public static String[] keypad(int num) {
+
+		
+	if(num==0)        // base case
+	{
+		String[] output= {""};
+		return output;
+	}
+	
+	
+	String[] smalloutput=keypad(num/10);      // string array to store recursion's answer
+	
+	String ans=keypadHelper(num%10);
+	
+	String output[]=new String[smalloutput.length*ans.length()];          // string to store final answer
+	
+	int k=0;
+	for(int i=0;i<ans.length();i++)
+	{
+		for(int j=0;j<smalloutput.length;j++)
+		{
+			output[k]=smalloutput[j]+ans.charAt(i);
+			k++;
+		}
+	}
+	
+	return output;	
+	}
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+int num=23;
+String[] a=keypad(num);
+for(int i=0;i<a.length;i++)
+System.out.println(a[i]);
+
+	}
+}
