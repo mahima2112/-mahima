@@ -1,0 +1,33 @@
+// Program to compress a string. For each character that is repeated more than once,replace each consecutive duplicate occurance with the number of repetitions.
+
+
+public class CompressString {
+
+	public static void main(String[] args) {
+		String str = "aaabbccs";
+		String ans = compress(str);
+		System.out.println(ans);
+	}
+
+	public static String compress(String inputString) {
+		// Write your code here
+		String str = "";
+		int count = 1;
+		for (int i = 1; i < inputString.length(); i++) {
+			if (inputString.charAt(i - 1) != inputString.charAt(i)) {
+				if (count == 1)
+					str = str + inputString.charAt(i - 1);
+				else
+					str = str + inputString.charAt(i - 1) + count;
+				count = 0;
+			}
+			count++;
+		}
+		if (inputString.charAt(inputString.length() - 1) == inputString.charAt(inputString.length() - 2)) {
+			str = str + inputString.charAt(inputString.length() - 1) + count;
+		} else
+			str = str + inputString.charAt(inputString.length() - 1);
+		return str;
+	}
+
+}
