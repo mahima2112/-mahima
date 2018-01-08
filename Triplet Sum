@@ -1,0 +1,45 @@
+// A program to find triplets that sum up to a given number x
+
+import java.util.Scanner;
+
+public class tripletSum {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner s = new Scanner(System.in);
+		int n = s.nextInt();
+		int i, j, k;
+		int num = s.nextInt();
+		int arr[] = new int[n];
+		for (i = 0; i < n; i++)
+			arr[i] = s.nextInt();
+		for (i = 0; i < n; i++) {
+			for (j = i + 1; j < n; j++) {
+				for (k = i + 1; k < n; k++) {
+
+					if (arr[i] + arr[j] + arr[k] == num) {
+						if (arr[i] < arr[j] && arr[i] < arr[k] && arr[j] <= arr[k]) {
+
+							System.out.println(arr[i] + " " + arr[j] + " " + arr[k]);
+						} else if (arr[i] < arr[j] && arr[i] < arr[k] && arr[j] > arr[k]) {
+							System.out.println(arr[i] + " " + arr[k] + " " + arr[j]);
+						}
+						if (arr[j] <= arr[i] && arr[j] <= arr[k] && arr[i] <= arr[k]) {
+
+							System.out.println(arr[j] + " " + arr[i] + " " + arr[k]);
+						} else if (arr[i] < arr[j] && arr[i] < arr[k] && arr[j] > arr[k]) {
+							System.out.println(arr[i] + " " + arr[k] + " " + arr[j]);
+						}
+						if (arr[k] <= arr[i] && arr[k] <= arr[j] && arr[i] <= arr[j]) {
+							System.out.println(arr[k] + " " + arr[i] + " " + arr[j]);
+						} else if (arr[i] < arr[j] && arr[i] < arr[k] && arr[j] > arr[k]) {
+							System.out.println(arr[i] + " " + arr[k] + " " + arr[j]);
+						}
+					}
+				}
+			}
+
+		}
+
+	}
+}
