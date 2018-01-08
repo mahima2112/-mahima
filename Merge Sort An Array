@@ -1,0 +1,59 @@
+// A basic program to sort an array of elements uding Merge Sort method
+
+public class MergeSort {
+	public static void mergeSort(int[] input) {
+		int i;
+		if (input.length == 1)    // base case
+			return;
+		int mid = input.length / 2;
+		int[] left = new int[mid];
+		int[] right = new int[input.length - mid];
+		for (i = 0; i < mid; i++)
+			left[i] = input[i];
+		int k = 0;
+		for (i = mid; i < input.length; i++) {
+			right[k] = input[i];
+			k++;
+		}
+		int[] output = new int[left.length + right.length];
+		mergeSort(left);
+		mergeSort(right);
+		merge(left, right, input);
+
+	}
+
+	public static void merge(int[] input1, int[] input2, int[] result) {
+		int i = 0, j = 0, k = 0;
+		while (i < input1.length && j < input2.length) {
+			if (input1[i] < input2[j]) {
+				result[k] = input1[i];
+				k++;
+				i++;
+			} else {
+				result[k] = input2[j];
+				k++;
+				j++;
+			}
+		}
+		while (i < input1.length) {
+			result[k] = input1[i];
+			i++;
+			k++;
+		}
+		while (j < input2.length) {
+			result[k] = input2[j];
+			j++;
+			k++;
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int input[] = { 2, 4, 1, 3, 21, 6 };
+		mergeSort(input);
+		for (int i = 0; i < input.length; i++)
+			System.out.print(input[i] + " ");
+
+	}
+
+}
