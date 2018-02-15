@@ -1,3 +1,5 @@
+// 01 KnapSack Problem in Java
+
 public class Knapsack {
 public static int knapSack(int maxWeight, int wt[], int val[], int n)
 	      {
