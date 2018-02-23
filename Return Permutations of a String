@@ -1,0 +1,30 @@
+// Given a string, we have to return all the possible permutations.
+
+
+public class recursion {
+	
+	public static String[] permutationOfString(String input){
+		
+	
+		if (input.length() == 0) {
+			String output[] = {""};       // base case
+			return output;
+		}
+
+		String[] smallOutput=permutationOfString(input.substring(1));    // smallOutput will store the recursive call's ans
+		String[] output=new String[input.length() * smallOutput.length];      // We need to combine the answer and need a new array for that
+		
+		int k = 0;
+		for(int i = 0 ; i < smallOutput.length ; i++) {
+			String currentString=smallOutput[i];
+		
+	for(int j = 0;j <= currentString.length() ; j++) {
+		output[k] = currentString.substring(0, j) + input.charAt(0) + currentString.substring(j,currentString.length());
+		k++;
+	
+		
+	}
+	}
+		return output;
+}
+}
