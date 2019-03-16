@@ -1,0 +1,70 @@
+//A Maze is given as N*N binary matrix of blocks where source block is the upper left most block i.e., 
+//maze[0][0] and destination block is lower rightmost block i.e., maze[N-1][N-1].
+//A rat starts from source and has to reach the destination.
+
+
+package backtracking;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class RatInAMaze {
+
+	public static void findPathCountPossiblePaths(int maze[][], int n, int x, int y, int path[][]) {
+
+		if (x < 0 || x >= n || y < 0 || y >= n) {
+			return;
+		}
+
+		if (x == n - 1 && y == n - 1) {
+			path[x][y] = 1;
+			// last cell has because it
+			// is destination
+			for (int i = 0; i < n; i++) {
+				for (int j = 0; j < n; j++) {
+					System.out.print(path[i][j] + " ");
+				}
+				System.out.println();
+			}
+			System.out.println();
+			return;
+		}
+
+		if (maze[x][y] == 0 || path[x][y] == 1) { // dead end
+			return;
+		}
+		path[x][y] = 1;
+
+		// right side
+		findPathCountPossiblePaths(maze, n, x, y + 1, path);
+
+		// left
+		findPathCountPossiblePaths(maze, n, x, y - 1, path);
+
+		// top
+		findPathCountPossiblePaths(maze, n, x - 1, y, path);
+
+		// down
+		findPathCountPossiblePaths(maze, n, x + 1, y, path);
+
+		path[x][y] = 0;
+
+	}
+
+
+public static void findPathCountPossiblePaths(int maze[][], int n) {
+		int path[][] = new int[20][20];
+		findPathCountPossiblePaths(maze, n, 0, 0, path);
+	}
+  
+  
+public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int maze[][] = { { 1, 1, 0 }, { 1, 1, 0 }, { 0, 1, 1 } };
+		
+		 findPathCountPossiblePaths(maze, 3);
+
+	}
+
+}
