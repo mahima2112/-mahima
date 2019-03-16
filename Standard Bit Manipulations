@@ -1,0 +1,47 @@
+// These are some standard bit manipulations
+
+package bitMagic;
+
+public class BitManipulations {
+
+	// Compute XOR from 1 to n
+	public static int computeXOR(int n) {
+		if (n % 4 == 0)
+			return n;
+		if (n % 4 == 1)
+			return 1;
+		if (n % 4 == 2)
+			return n + 1;
+		else
+			return 0;
+
+	}
+
+	// no of bits to flip to convert number A to B
+	public static int convert(int n) {
+		int count = 0;
+		while (n != 0) {
+			count = count + (n & 1);
+			n >>= 1;
+		}
+		return count;
+	}
+
+	public static int flip(int a, int b) {
+		return convert(a ^ b);
+	}
+
+	// unique element of an array
+	public static int findOdd(int arr[]) {
+		int result = 0;
+		for (int i = 0; i < arr.length; i++)
+			result = result ^ arr[i];
+		return result;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
