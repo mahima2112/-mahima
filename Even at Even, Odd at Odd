@@ -1,0 +1,47 @@
+// Place all even numbers at even indices and odd at odd indices.
+
+
+package first;
+
+public class EvenAtEvenOddAtOddg4g {
+
+	public static void arrange(int arr[], int n) {
+		int oddInd = 1; 
+	    int evenInd = 0; 
+	    while (true) 
+	    { 
+	        while (evenInd < n && arr[evenInd] % 2 == 0) 
+	            evenInd += 2; 
+	              
+	        while (oddInd < n && arr[oddInd] % 2 == 1) 
+	            oddInd += 2; 
+	              
+	        if (evenInd < n && oddInd < n) 
+	            { 
+	                int temp = arr[evenInd]; 
+	                arr[evenInd] = arr[oddInd]; 
+	                arr[oddInd] = temp; 
+	            } 
+	              
+	        else
+	            break; 
+	    } 
+	}
+
+	public static void print(int arr[], int n) {
+		for (int i = 0; i < n; i++) {
+			System.out.print(arr[i] + " ");
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int arr[] = { 1, 2, 3, 4, 5, 6, 1 };
+		int n = 7;
+		arrange(arr, n);
+		print(arr, n);
+
+	}
+
+}
