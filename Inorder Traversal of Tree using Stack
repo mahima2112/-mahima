@@ -1,0 +1,16 @@
+// Using stack for inorder traversal of binary tree
+
+
+public static void inorder(Node root){
+	Stack<Node> stack = new Stack<>();
+	Node current = root;
+	while(current!=null || !s.isEmpty()){
+		while(current!=null){
+			stack.push(current);
+			current = current.left;
+			current = stack.pop();
+			System.out.print(current.data+" ");
+			current = current.right;
+		}
+	}
+}
