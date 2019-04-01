@@ -1,0 +1,25 @@
+// According to the Morris Traversal, we neither use a stack nor recursion for the traversal of binary tree. 
+
+public static void morrisTraversal(Node head){
+	while(head!=null){
+		if(head.left==null){
+			System.out.print(head.data+" ");
+			head = head.right;
+			}
+			else{
+				Node current = head.left;
+				while(current.right!=null && current.right!=head){
+					current = current.right;
+				}
+				if(current.right == head){
+					current.right = null;
+					head = head.right;
+				}
+				else{
+					System.out.print(head.data+" ");
+					current.right = head;
+					head = head.left;
+				}
+			}
+	}
+}
