@@ -1,0 +1,32 @@
+// For a given perfect binary tree print the tree such that one left and one right node from terminal ends gets printed subsequently. 
+
+
+public static void printSpecificLevel(Node root){
+	if(root==null)
+		return;
+	System.out.print(root.data);
+	if(root.left!=null)
+		System.out.print(" "+root.left.data+" "+root.right.data);
+	if(root.left.left==null)
+		return;
+	Queue<Node> q = new LinkedList<Node>();
+	q.add(root.left);
+	q.add(root.right);
+	Node first = null, second = null;
+	while(!q.isEmpty()){
+		first = q.poll();
+		second = q.poll();
+
+		System.out.print(" "+first.left.data+" "+second.right.data);
+		System.out.print(" "+first.right.data+" "+second.left.data);
+
+		// if first and second have grandchildren add in reverse order
+
+		if(first.left.left!=null){
+			q.add(first.left);
+			q.add(second.right);
+			q.add(first.right);
+			q.add(second.left);
+		}
+	}
+}
