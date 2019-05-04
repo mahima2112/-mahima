@@ -1,0 +1,62 @@
+// A program that takes a given input string and checks if the brackets are balanced or not.
+
+
+package stacks_queues;
+
+import java.util.*;
+
+public class BalanceBrackets {
+
+	public static boolean isMatchingPair(char ch1, char ch2) {
+		if (ch1 == '(' && ch2 == ')')
+			return true;
+		else if (ch1 == '{' && ch2 == '}')
+			return true;
+		else if (ch1 == '[' && ch2 == ']')
+			return true;
+		else
+			return false;
+
+	}
+
+	public static boolean checkBalanced(String exp) {
+		if (exp.length() == 0) {
+			return false;
+		}
+		if (exp.length() % 2 != 0)
+			return false;
+
+		Stack<Character> stack = new Stack<Character>();
+		for (int i = 0; i < exp.length(); i++) {
+			if (exp.charAt(i) == '(' || exp.charAt(i) == '{' || exp.charAt(i) == '[') {
+				stack.push(exp.charAt(i));
+			}
+			if (exp.charAt(i) == '}' || exp.charAt(i) == ')' || exp.charAt(i) == ']') {
+
+				if (stack.isEmpty())
+					return false;
+				else if (!isMatchingPair(stack.pop(), exp.charAt(i)))
+					return false;
+
+			}
+
+		}
+		return true;
+
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		StackUsingLinkedList<Integer> l = new StackUsingLinkedList<Integer>();
+		String exp = "()";
+		boolean p = checkBalanced(exp);
+		// if(checkBalanced(exp))
+		// System.out.println("balanced");
+		// else
+		// System.out.println("not balanced");
+		// }
+		System.out.println(p);
+	}
+
+}
