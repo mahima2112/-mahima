@@ -5,6 +5,18 @@
 //* represents cell you can travel
 //0 represents cell you can not travel
 
+static class pair {
+	int i;
+	int y;
+	int dist;
+	pair(int i, int y, int dist)
+	{
+		this.i= i;
+		this.y = y;
+		this.dist = dist;
+	}
+}
+
 
 public static void bfs(char graph[][],int n,int m,boolean visited[][]){
 		
