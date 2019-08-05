@@ -1,0 +1,45 @@
+//Given a dictionary, and two words ‘start’ and ‘target’ (both of same length). 
+//Find length of the smallest chain from ‘start’ to ‘target’ if it exists, such that adjacent words in the chain only differ by one
+//character and each word in the chain is a valid word i.e., it exists in the dictionary. It may be assumed that the ‘target’ word 
+//exists in dictionary and length of all dictionary words is same.
+
+
+class wordNode{
+	int word;
+	int numSteps;
+	public wordNode(String word,int numSteps){
+		this.word = word;
+		this.numSteps = numSteps;
+	}
+}
+
+public class Sol{
+	public int ladderLength(String start,String end,Set<String> wordDict){
+		LinkedList<wordNode> q = new LinkedList<wordNode>();
+		q.add(new wordNode(start,1));
+		wordDict.add(end);
+		while(!q.isEmpty()){
+			wordNode top = q.remove();
+			String word = top.word;
+			if(word.equals(endWord))
+				return top.numSteps;
+
+			char arr[] word.toCharArray();
+			for(int i = 0;i<arr.length;i++){
+				for(char c = 'a';c<='z';c++){
+					char temp = arr[i];
+					if(arr[i]!=c)
+						arr[i] = c;
+				String newWord = new String(arr);
+				if(wordDict.contains(newWord)){
+					q.add(new wordNode(newWord,top.numSteps+1));
+					wordDict.remove(newWord);
+				}
+				arr[i] = temp;
+				}
+
+			}
+		}
+		return 0;
+	}
+}
