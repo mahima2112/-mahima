@@ -1,0 +1,52 @@
+//There are a total of n tasks you have to pick, labeled from 0 to n-1. Some tasks may have prerequisites tasks, 
+//for example to pick task 0 you have to first finish tasks 1, which is expressed as a pair: [0, 1]
+
+//Given the total number of tasks and a list of prerequisite pairs, return the ordering of tasks you should pick to finish all tasks.
+
+
+
+public static boolean canFinish(int numCourses,int preReq[][]){
+	if(preReq==null)
+		return false;
+	int l = preReq.length;
+	if(numCourses==0||l==0)
+		return true;
+
+	// for visited courses
+	int visited[] = new int[numCourses];
+
+	// map to store what courses depend on what
+	HashMap<Integer,ArrayList<Integer>> map = new HashMap<>();
+	for(int a[]:preReq){
+		if(map.containsKey(a[1]))
+			map.get(a[1]).add(a[0]);
+		else{
+			ArrayList<Integer> l = new ArrayList<>();
+			l.add(a[0]);
+			map.put(a[1],l);
+		}
+	}
+	for(int i = 0;i<numCourses;i++){
+		if(!dfs(map,visited,i))
+			return false;
+	}
+	return true;
+}
+
+
+
+public static boolean dfs(HashMap<Integer,ArrayList<Integer>> map,boolean visited[],int i){
+if(visited[i]==false)
+	return false;
+if(visited[i]==true)
+	return true;
+visited[i] = false;
+if(map.containsKey(i)){
+	for(int j:map.get(i)){
+		if(!dfs(map,visited,j))
+			return false;
+	}
+}
+visited[i] = true;
+return true;
+}
