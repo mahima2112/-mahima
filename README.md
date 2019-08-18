@@ -1,2 +1,1 @@
-# -mahima
-This repository contains a few interesting Java problems.
+This repository contains a few interesting problems with their solutions.
