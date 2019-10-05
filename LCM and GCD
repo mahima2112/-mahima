@@ -23,6 +23,16 @@ public class LCMGCD {
 		return lcm;
 	}
 
+	//new method
+	// lcm * gcd = a* b;
+
+	public int findLCM(int a, int b) {
+		int gcd = GCD(a,b);
+		int lcm = (a * b )/ gcd;
+		return lcm;
+	}
+
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
