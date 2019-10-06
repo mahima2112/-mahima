@@ -25,7 +25,8 @@ public class LCMGCD {
 
 	//new method
 	// lcm * gcd = a* b;
-
+	// easier way to find LCM
+	
 	public int findLCM(int a, int b) {
 		int gcd = GCD(a,b);
 		int lcm = (a * b )/ gcd;
