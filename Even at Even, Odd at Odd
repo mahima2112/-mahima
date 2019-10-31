@@ -10,10 +10,10 @@ public class EvenAtEvenOddAtOddg4g {
 	    int evenInd = 0; 
 	    while (true) 
 	    { 
-	        while (evenInd < n && arr[evenInd] % 2 == 0) 
+	        while (evenInd < n && (arr[evenInd] & 1) == 0) 
 	            evenInd += 2; 
 	              
-	        while (oddInd < n && arr[oddInd] % 2 == 1) 
+	        while (oddInd < n && (arr[oddInd] & 1) == 1) 
 	            oddInd += 2; 
 	              
 	        if (evenInd < n && oddInd < n) 
