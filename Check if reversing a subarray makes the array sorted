@@ -5,7 +5,7 @@ public static boolean checkRev(int arr[],int n){
 	if(n==1)
 		return true;
 	int i;
-	for(i = 0;i<n && arr[i-1]<arr[i];i++);
+	for(i = 1;i<n && arr[i-1]<arr[i];i++);
 		if(i==n)
 			return true;
 
