@@ -1,0 +1,46 @@
+//Given a tree having every node’s value as either 0 or 1, the task is to find the maximum size of the sub-tree 
+//in the given tree that has equal number of 0’s and 1’s, if no such sub-tree exists then print -1.
+
+
+class subtree{
+  static int maxSize = -1;
+  
+  static int maxSize(Node root){
+  int a = 0,b = 0;
+  if(root==null)
+    return 0;
+  
+  a = maxSize(root.right);
+  a = a+1; // add 1 for parent
+  
+  b = maxSize(root.left);
+  a = b+a;
+  
+  if(root.data == 0) // equal number of 0s and 1s
+  {
+    if(a>=maxSize)
+    maxSize = a;
+}
+return a;
+}
+
+static int sumTree(Node root){
+
+  if(root!=null){
+    if(root.data == 1)
+    root.data = -1;
+    }
+    
+    int a = 0;
+    int b = 0;
+    if(root.left!=null)
+    a = sumTree(root.left);
+    
+    if(root.right!=null)
+    b = sumTree(root.right);
+    
+    root.data = root.data+a+b;
+
+  return root.data;
+
+}
