@@ -1,0 +1,47 @@
+/*Write the code to find the length of the longest increasing subsequence (LIS), that is, the length of the longest
+subsequence of a given sequence such that all the elements of the subsequence are sorted in increasing order. 
+*/
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Source
+{
+    static int lis(int arr[],int n)
+    {
+        /* Complete this function such that it returns the length of the longest 
+       increasing subsequence in arr[] of size n */
+       int lis[] = new int[n];
+       Arrays.fill(lis,1);
+       int max = 0;
+       for(int i=1;i<n;i++){
+           for(int j=0;j<i;j++){
+               if(arr[i]>arr[j] && lis[i]<lis[j]+1){
+                   lis[i] = lis[j] +1;
+               }
+           }
+       }
+       for(int i = 0;i<n;i++){
+           if(lis[i]>max){
+               max = lis[i];
+           }
+       }
+       return max;
+    }
+  
+    public static void main(String args[])
+    {
+        int n;
+        Scanner s = new Scanner(System.in);
+        n = s.nextInt();
+        int arr[] = new int[n];
+        for(int i = 0; i < n; i++)
+            arr[i] = s.nextInt();
+ 
+            System.out.println(lis( arr, n ) + "\n" );
+    }
+}
