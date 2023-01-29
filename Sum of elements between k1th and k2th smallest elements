@@ -1,0 +1,20 @@
+Given an array of integers and two numbers k1 and k2. Find the sum of all elements between given two k1’th and k2’th smallest elements of the array.
+It may be assumed that (1 <= k1 < k2 <= n) and all elements of array are distinct.
+
+
+long sum(long a[], long n, long k1, long k2){
+	PriorityQueue<Long> maxH = new PriorityQueue<>(Collections.reverseOrder());
+	for(int i = 0;i<n;i++){
+		maxH.add(a[i]);
+		if(maxH.size()>k2){
+			maxH.remove();
+		}
+	}
+	maxH.remove();
+	long ans = 0;
+	while(maxH.size()>k1){
+		ans+=maxH.peek();
+		maxH.remove();
+	}
+	return ans;
+}
