@@ -10,6 +10,18 @@ public class LCMGCD {
 		if (b == 0)
 			return a;
 		return GCD(b, a % b);
+		
+		
+	/*	Another way to find GCD
+	while(a != b)
+        {
+            if(a > b)
+                a -= b;
+            else
+                b -= a;
+        }
+
+        System.out.println("G.C.D = " + a) ; */
 	}
 
 	public int findLCM(int a, int b) {
